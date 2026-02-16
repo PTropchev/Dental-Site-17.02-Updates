@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { config } from '../config'
+import logo from '../assets/logo.png'
 
 function safeSetTitle(title) {
   if (typeof document !== 'undefined') document.title = title
@@ -145,9 +146,10 @@ export default function Layout({ children }) {
 
       <nav className="navbar navbar-expand-lg bg-white sticky-top border-bottom">
         <div className="container">
-          <a className="navbar-brand fw-bold" href="/">
-            TGM-dental
-          </a>
+          <a className="navbar-brand d-flex align-items-center gap-2" href="/">
+  <img src={logo} alt="TGM Dental" className="logo-img" />
+  <span className="fw-bold">TGM-dental</span>
+</a>
           <button
             className="navbar-toggler"
             type="button"

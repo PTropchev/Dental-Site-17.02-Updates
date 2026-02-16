@@ -52,7 +52,7 @@ export default function Home() {
             <div className="col-lg-6">
               <h1 className="display-5 fw-bold">Перфектната усмивка започва при нас</h1>
               <p className="lead text-secondary">
-                Съвременна дентална медицина с индивидуален подход, основана на технологии и иновации.
+                Съвременна дентална медицина с индивидуален подход, основан на технологии и иновации.
               </p>
               <div className="d-flex flex-wrap gap-2">
                 <a className="btn btn-primary btn-lg rounded-pill px-4" href="#book">
@@ -73,7 +73,7 @@ export default function Home() {
             </div>
             <div className="col-lg-6">
               <div className="hero-card shadow-sm">
-                <img className="img-fluid rounded-4" src="/img/123.jpg" alt="Клиника" />
+                <img className="img-fluid rounded-4" src="/img/klinika.jpg" alt="Клиника"/>
               </div>
             </div>
           </div>
@@ -117,8 +117,32 @@ export default function Home() {
       <section id="about" className="pt-0 pb-5">
         <div className="container">
           <div className="row g-4 align-items-center">
-            <div className="col-lg-5">
-              <img className="img-fluid rounded-4" src="/img/brbr.jpg" alt="Кабинет" />
+            <div className="col-lg-5 pe-lg-5">
+              <div id="clinicCarousel" className="carousel slide" data-bs-ride="carousel">
+  <div className="carousel-inner rounded-4">
+
+    <div className="carousel-item active">
+      <img src="/img/brbr.jpg" className="d-block w-100" alt="Кабинет" />
+    </div>
+
+    <div className="carousel-item">
+      <img src="/img/zubi1.jpg" className="d-block w-100" alt="Зъби 1" />
+    </div>
+
+    <div className="carousel-item">
+      <img src="/img/zubi2.jpg" className="d-block w-100" alt="Зъби 2" />
+    </div>
+
+  </div>
+
+  <button className="carousel-control-prev" type="button" data-bs-target="#clinicCarousel" data-bs-slide="prev">
+    <span className="carousel-control-prev-icon"></span>
+  </button>
+
+  <button className="carousel-control-next" type="button" data-bs-target="#clinicCarousel" data-bs-slide="next">
+    <span className="carousel-control-next-icon"></span>
+  </button>
+</div>
             </div>
             <div className="col-lg-7">
               <p className="section-kicker mb-2">ЗАЩО ДА НИ ИЗБЕРЕТЕ</p>
@@ -167,18 +191,18 @@ export default function Home() {
           <div className="row g-4">
             <div className="col-md-6">
               <div className="card border-0 shadow-sm rounded-4 h-100">
-                <img className="rounded-top-4 doctor-img" src="/img/1.jpg" alt="Д-р 1" />
+                <img className="rounded-top-4" src="/img/tedo1.jpg" style={{width: "100%", height: "350px", objectFit: "cover"}}/>
                 <div className="card-body">
-                  <h5 className="card-title mb-1">Д-р Венислав Василев</h5>
+                  <h5 className="card-title mb-1">Д-р Теодор Горочвски</h5>
                   <p className="text-secondary mb-0">Ортодонтия • Естетика • Комплексни планове</p>
                 </div>
               </div>
             </div>
             <div className="col-md-6">
               <div className="card border-0 shadow-sm rounded-4 h-100">
-                <img className="rounded-top-4 doctor-img" src="/img/2.jpg" alt="Д-р 2" />
+                <img className="rounded-top-4" src="/img/tedo2.jpg" style={{width: "100%", height: "350px", objectFit: "cover"}}/>
                 <div className="card-body">
-                  <h5 className="card-title mb-1">Д-р Дания Николова</h5>
+                  <h5 className="card-title mb-1">Д-р Теодор Горчовски</h5>
                   <p className="text-secondary mb-0">Терапия • Протетика • Профилактика</p>
                 </div>
               </div>
@@ -232,7 +256,7 @@ export default function Home() {
       <section id="reviews" className="py-5">
         <div className="container">
           <p className="section-kicker mb-2">Доволни пациенти. Гарантиран резултат.</p>
-          <h2 className="fw-bold mb-5">Последни Google ревюта</h2>
+          <h2 className="fw-bold mb-5">Ревюта от наши пациенти</h2>
 
           <div className="row g-4">
 
