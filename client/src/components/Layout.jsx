@@ -146,7 +146,7 @@ export default function Layout({ children }) {
       <nav className="navbar navbar-expand-lg bg-white sticky-top border-bottom">
         <div className="container">
           <a className="navbar-brand fw-bold" href="/">
-            Tvoeto ime
+            TGM-dental
           </a>
           <button
             className="navbar-toggler"
@@ -211,8 +211,7 @@ export default function Layout({ children }) {
             <div className="col-lg-4">
               <h5 className="fw-bold">За нас</h5>
               <p className="text-secondary mb-0">
-                Съвременна дентална практика с фокус върху комфорт, прецизност и
-                индивидуален подход.
+                За нас: Здравейте, ние сме дентална клиника TGM! Ние сме млади лекари, стремящи се към приятелски подход към пациентите и отлични резултати от процедурите. Специализираме в кореново лечение, лекуване на кариеси и ортодонтия.
               </p>
             </div>
 
@@ -235,9 +234,6 @@ export default function Layout({ children }) {
               <h5 className="fw-bold">Адреси</h5>
               <p className="text-secondary mb-2">
                 <strong>София:</strong> {config.clinicAddressSofia}
-              </p>
-              <p className="text-secondary mb-0">
-                <strong>Сапарева Баня:</strong> {config.clinicAddressSapareva}
               </p>
             </div>
           </div>

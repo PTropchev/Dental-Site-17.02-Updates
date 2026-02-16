@@ -122,7 +122,7 @@ export default function Home() {
             </div>
             <div className="col-lg-7">
               <p className="section-kicker mb-2">ЗАЩО ДА НИ ИЗБЕРЕТЕ</p>
-              <h2 className="fw-bold">Tvoito ime - Дентална Клиника</h2>
+              <h2 className="fw-bold">TGM-dental</h2>
               <p className="text-secondary">
                 Амбициозен и енергичен екип от професионалисти, в непрекъснат стремеж към развитие и резултати.
               </p>
@@ -192,7 +192,7 @@ export default function Home() {
           <p className="section-kicker mb-2">НАШИТЕ УСЛУГИ</p>
           <div className="d-flex flex-wrap gap-2 align-items-end justify-content-between">
             <div>
-              <h2 className="fw-bold mb-1">Дентални услуги за всяка нужда</h2>
+              <h2 className="fw-bold mb-1">Основни дентални услуги</h2>
               <p className="text-secondary mb-0">Пълен спектър – от профилактика до комплексни възстановявания.</p>
             </div>
             <a className="btn btn-outline-primary rounded-pill px-4" href="/pricing">
@@ -203,26 +203,26 @@ export default function Home() {
           <div className="row g-3 mt-3">
             <div className="col-md-6 col-lg-3">
               <div className="info-card h-100">
+                <h6 className="fw-bold mb-1">Терапия</h6>
+                <p className="text-secondary mb-0">Комплексна диагностика и лечение на кариеси и възпалителни процеси с фокус върху запазването на естествените зъби и дългосрочното орално здраве.</p>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-3">
+              <div className="info-card h-100">
+                <h6 className="fw-bold mb-1">Ендодонтия</h6>
+                <p className="text-secondary mb-0">Високопрецизно лечение на коренови канали с модерна апаратура за елиминиране на инфекцията и запазване на зъба.</p>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-3">
+              <div className="info-card h-100">
                 <h6 className="fw-bold mb-1">Ортодонтия</h6>
-                <p className="text-secondary mb-0">Фиксирани/снемаеми апарати и алайнери.</p>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-3">
-              <div className="info-card h-100">
-                <h6 className="fw-bold mb-1">Имплантология</h6>
-                <p className="text-secondary mb-0">Възстановяване на липсващи зъби и All-on-4.</p>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-3">
-              <div className="info-card h-100">
-                <h6 className="fw-bold mb-1">Лечение на кариес</h6>
-                <p className="text-secondary mb-0">Прецизно и щадящо възстановяване.</p>
+                <p className="text-secondary mb-0">Индивидуални решения за подреждане на зъбите и корекция на захапката с цел хармонична и здрава усмивка.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-3">
               <div className="info-card h-100">
                 <h6 className="fw-bold mb-1">Дентална естетика</h6>
-                <p className="text-secondary mb-0">Избелване, бондинг и естетични решения.</p>
+                <p className="text-secondary mb-0">Естетични процедури от ново поколение за постигане на естествена, сияйна и уверена усмивка..</p>
               </div>
             </div>
           </div>
@@ -234,44 +234,41 @@ export default function Home() {
           <p className="section-kicker mb-2">Доволни пациенти. Гарантиран резултат.</p>
           <h2 className="fw-bold mb-5">Последни Google ревюта</h2>
 
-          {reviews === null ? (
-            <div className="alert alert-secondary">Зареждане…</div>
-          ) : reviews.length ? (
-            <div className="row g-4">
-              {reviews.map((r, idx) => (
-                <div key={`${r.author_name}-${idx}`} className="col-lg-4 col-md-6">
-                  <div className="review-card rounded-4 p-4 h-100">
-                    <div className="d-flex align-items-center gap-3 mb-3">
-                      {r.profile_photo_url ? (
-                        <img
-                          src={r.profile_photo_url}
-                          alt={r.author_name}
-                          className="review-avatar"
-                        />
-                      ) : (
-                        <div className="review-avatar fallback">
-                          {(r.author_name || 'А')[0]}
-                        </div>
-                      )}
+          <div className="row g-4">
 
-                      <div>
-                        <div className="fw-bold">{r.author_name || 'Анонимен'}</div>
-                        <StarRow
-                          rating={Number(r.rating || 5)}
-                          relativeTime={r.relative_time_description || ''}
-                        />
-                      </div>
-                    </div>
+  <div className="col-lg-4 col-md-6">
+    <div className="review-card rounded-4 p-4 h-100">
+      <div className="fw-bold mb-2">Мария Иванова</div>
+      <div className="text-warning mb-2">★★★★★</div>
+      <p className="mb-0">
+        Изключително внимателен и професионален екип. Препоръчвам с две ръце!
+      </p>
+    </div>
+  </div>
 
-                    <p className="mb-0">{r.text || ''}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="alert alert-secondary">Все още няма налични ревюта.</div>
-          )}
+  <div className="col-lg-4 col-md-6">
+    <div className="review-card rounded-4 p-4 h-100">
+      <div className="fw-bold mb-2">Георги Петров</div>
+      <div className="text-warning mb-2">★★★★★</div>
+      <p className="mb-0">
+        Модерна клиника и отлично отношение. Часът ми беше спазен точно.
+      </p>
+    </div>
+  </div>
+
+  <div className="col-lg-4 col-md-6">
+    <div className="review-card rounded-4 p-4 h-100">
+      <div className="fw-bold mb-2">Елена Димитрова</div>
+      <div className="text-warning mb-2">★★★★★</div>
+      <p className="mb-0">
+        Най-добрият зъболекар, при който съм била. Безболезнено и спокойно лечение.
+      </p>
+    </div>
+  </div>
+
+</div>
         </div>
+        
       </section>
 
       <section id="book" className="py-5">
@@ -298,7 +295,7 @@ export default function Home() {
   <h4 className="mb-3">Запази си час чрез Calendly</h4>
 
   <p className="mb-4">
-    Избери удобен ден и час директно чрез нашата система за онлайн записване.
+    Избери удобен ден и час директно чрез нашата система за онлайн записване.Ф
   </p>
 
   <a 

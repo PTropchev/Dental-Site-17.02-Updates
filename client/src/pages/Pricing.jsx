@@ -147,7 +147,6 @@ export default function Pricing() {
                   </div>
                   <hr />
                   <p className="text-secondary mb-2"><strong>София:</strong> {config.clinicAddressSofia}</p>
-                  <p className="text-secondary mb-0"><strong>Сапарева Баня:</strong> {config.clinicAddressSapareva}</p>
                 </div>
               </div>
             </div>
