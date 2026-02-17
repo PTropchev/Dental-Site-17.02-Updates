@@ -15,5 +15,20 @@
     <div id="root"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="/src/main.jsx"></script>
+    <!-- Calendly badge widget begin -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script type="text/javascript">
+  window.onload = function() {
+    Calendly.initBadgeWidget({
+      url: 'https://calendly.com/teodorgorchovski/30min',
+      text: 'Запази час',
+      color: '#0069ff',
+      textColor: '#ffffff',
+      branding: true
+    });
+  }
+</script>
+<!-- Calendly badge widget end -->
   </body>
 </html>
