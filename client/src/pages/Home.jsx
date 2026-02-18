@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { config } from "../config";
 
 function StarRow({ rating, relativeTime }) {
@@ -18,25 +18,6 @@ function StarRow({ rating, relativeTime }) {
 }
 
 export default function Home() {
-  const [reviews, setReviews] = useState(null);
-
-  useEffect(() => {
-    let ignore = false;
-    (async () => {
-      try {
-        const res = await fetch("/api/reviews");
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        if (!ignore) setReviews(Array.isArray(data) ? data : []);
-      } catch {
-        if (!ignore) setReviews([]);
-      }
-    })();
-    return () => {
-      ignore = true;
-    };
-  }, []);
-
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://assets.calendly.com/assets/external/widget.js";
@@ -57,7 +38,7 @@ export default function Home() {
 
   return (
     <>
-      <header className="hero">
+      <header id="top" className="hero">
         <div className="container py-5">
           <div className="row align-items-center g-4">
             <div className="col-lg-6">
@@ -388,7 +369,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="book" className="py-5">
+      <section id="book" className="py-5" style={{ scrollMarginTop: "100px" }}>
         <div className="container">
           <div className="row g-4">
             <div style={{ maxWidth: "420px", width: "100%" }}>

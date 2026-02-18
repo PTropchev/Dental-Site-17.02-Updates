@@ -1,123 +1,124 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import { config } from '../config'
-import logo from '../assets/logo.png'
+import React, { useEffect, useMemo, useState } from "react";
+import { config } from "../config";
+import logo from "../assets/logo.png";
 
 function safeSetTitle(title) {
-  if (typeof document !== 'undefined') document.title = title
+  if (typeof document !== "undefined") document.title = title;
 }
 
 export default function Layout({ children }) {
-  const year = useMemo(() => new Date().getFullYear(), [])
-  const [dark, setDark] = useState(false)
+  const year = useMemo(() => new Date().getFullYear(), []);
+  const [dark, setDark] = useState(false);
 
   useEffect(() => {
     // theme init
-    const saved = localStorage.getItem('theme')
-    const isDark = saved === 'dark'
-    setDark(isDark)
-    document.body.classList.toggle('dark-mode', isDark)
-  }, [])
+    const saved = localStorage.getItem("theme");
+    const isDark = saved === "dark";
+    setDark(isDark);
+    document.body.classList.toggle("dark-mode", isDark);
+  }, []);
 
   useEffect(() => {
     // Loader cleanup (if any)
-    const loader = document.getElementById('loader')
+    const loader = document.getElementById("loader");
     if (loader) {
       const t = window.setTimeout(() => {
-        loader.style.display = 'none'
-      }, 300)
-      return () => window.clearTimeout(t)
+        loader.style.display = "none";
+      }, 300);
+      return () => window.clearTimeout(t);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     // Reveal animations
-    const sections = document.querySelectorAll('section')
-    sections.forEach((s) => s.classList.add('reveal'))
+    const sections = document.querySelectorAll("section");
+    sections.forEach((s) => s.classList.add("reveal"));
 
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) e.target.classList.add('show')
-        })
+          if (e.isIntersecting) e.target.classList.add("show");
+        });
       },
-      { threshold: 0.12 }
-    )
+      { threshold: 0.12 },
+    );
 
-    sections.forEach((s) => io.observe(s))
+    sections.forEach((s) => io.observe(s));
 
-    return () => io.disconnect()
-  }, [])
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
-      const nav = document.querySelector('.navbar')
+      const nav = document.querySelector(".navbar");
       if (nav) {
-        if (window.scrollY > 50) nav.classList.add('nav-scrolled')
-        else nav.classList.remove('nav-scrolled')
+        if (window.scrollY > 50) nav.classList.add("nav-scrolled");
+        else nav.classList.remove("nav-scrolled");
       }
 
-      const scrollTop = document.documentElement.scrollTop
+      const scrollTop = document.documentElement.scrollTop;
       const scrollHeight =
-        document.documentElement.scrollHeight - document.documentElement.clientHeight
-      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0
-      const bar = document.getElementById('scrollProgress')
-      if (bar) bar.style.width = `${progress}%`
-    }
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      const bar = document.getElementById("scrollProgress");
+      if (bar) bar.style.width = `${progress}%`;
+    };
 
-    window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     // Counter animation (kept from original, only applies if elements exist)
-    const counters = document.querySelectorAll('.counter')
-    if (!counters.length) return
+    const counters = document.querySelectorAll(".counter");
+    if (!counters.length) return;
 
     const counterObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const el = entry.target
-            const target = Number(el.getAttribute('data-target') || '0')
-            let count = 0
+            const el = entry.target;
+            const target = Number(el.getAttribute("data-target") || "0");
+            let count = 0;
 
             const updateCounter = () => {
-              const increment = target / 100
+              const increment = target / 100;
               if (count < target) {
-                count += increment
-                el.innerText = String(Math.ceil(count))
-                requestAnimationFrame(updateCounter)
+                count += increment;
+                el.innerText = String(Math.ceil(count));
+                requestAnimationFrame(updateCounter);
               } else {
-                el.innerText = `${target}+`
+                el.innerText = `${target}+`;
               }
-            }
+            };
 
-            updateCounter()
-            counterObserver.unobserve(el)
+            updateCounter();
+            counterObserver.unobserve(el);
           }
-        })
+        });
       },
-      { threshold: 0.6 }
-    )
+      { threshold: 0.6 },
+    );
 
-    counters.forEach((c) => counterObserver.observe(c))
-    return () => counterObserver.disconnect()
-  }, [])
+    counters.forEach((c) => counterObserver.observe(c));
+    return () => counterObserver.disconnect();
+  }, []);
 
   const toggleTheme = () => {
-    const next = !dark
-    setDark(next)
-    document.body.classList.toggle('dark-mode', next)
-    localStorage.setItem('theme', next ? 'dark' : 'light')
-  }
+    const next = !dark;
+    setDark(next);
+    document.body.classList.toggle("dark-mode", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
+  };
 
   // Keep title similar to Django templates based on route
   useEffect(() => {
-    const path = window.location.pathname
-    if (path === '/pricing') safeSetTitle(`Ценоразпис | ${config.clinicName}`)
-    else safeSetTitle(`Начало | ${config.clinicName}`)
-  }, [children])
+    const path = window.location.pathname;
+    if (path === "/pricing") safeSetTitle(`Ценоразпис | ${config.clinicName}`);
+    else safeSetTitle(`Начало | ${config.clinicName}`);
+  }, [children]);
 
   return (
     <>
@@ -147,9 +148,9 @@ export default function Layout({ children }) {
       <nav className="navbar navbar-expand-lg bg-white sticky-top border-bottom">
         <div className="container">
           <a className="navbar-brand d-flex align-items-center gap-2" href="/">
-  <img src={logo} alt="TGM Dental" className="logo-img" />
-  <span className="fw-bold">TGM-dental</span>
-</a>
+            <img src={logo} alt="TGM Dental" className="logo-img" />
+            <span className="fw-bold">TGM-dental</span>
+          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -161,6 +162,11 @@ export default function Layout({ children }) {
 
           <div id="nav" className="collapse navbar-collapse">
             <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+              <li className="nav-item">
+                <a className="nav-link" href="#top">
+                  Начало
+                </a>
+              </li>
               <li className="nav-item">
                 <a className="nav-link" href="/#about">
                   За нас
@@ -186,11 +192,6 @@ export default function Layout({ children }) {
                   Контакти
                 </a>
               </li>
-              <li className="nav-item ms-lg-2">
-                <a className="btn btn-primary rounded-pill px-4" href="/#book">
-                  Запази час
-                </a>
-              </li>
             </ul>
             <button
               id="darkToggle"
@@ -199,7 +200,7 @@ export default function Layout({ children }) {
               type="button"
               aria-label="Toggle dark mode"
             >
-              {dark ? '☀' : '🌙'}
+              {dark ? "☀" : "🌙"}
             </button>
           </div>
         </div>
@@ -213,7 +214,10 @@ export default function Layout({ children }) {
             <div className="col-lg-4">
               <h5 className="fw-bold">За нас</h5>
               <p className="text-secondary mb-0">
-                За нас: Здравейте, ние сме дентална клиника TGM! Ние сме млади лекари, стремящи се към приятелски подход към пациентите и отлични резултати от процедурите. Специализираме в кореново лечение, лекуване на кариеси и ортодонтия.
+                За нас: Здравейте, ние сме дентална клиника TGM! Ние сме млади
+                лекари, стремящи се към приятелски подход към пациентите и
+                отлични резултати от процедурите. Специализираме в кореново
+                лечение, лекуване на кариеси и ортодонтия.
               </p>
             </div>
 
@@ -221,13 +225,22 @@ export default function Layout({ children }) {
               <h5 className="fw-bold">Контакти</h5>
               <ul className="list-unstyled mb-0 text-secondary">
                 <li>
-                  ✉️ <a href={`mailto:${config.clinicEmail}`}>{config.clinicEmail}</a>
+                  ✉️{" "}
+                  <a href={`mailto:${config.clinicEmail}`}>
+                    {config.clinicEmail}
+                  </a>
                 </li>
                 <li>
-                  📞 <a href={`tel:${config.clinicPhone1}`}>{config.clinicPhone1}</a>
+                  📞{" "}
+                  <a href={`tel:${config.clinicPhone1}`}>
+                    {config.clinicPhone1}
+                  </a>
                 </li>
                 <li>
-                  📞 <a href={`tel:${config.clinicPhone2}`}>{config.clinicPhone2}</a>
+                  📞{" "}
+                  <a href={`tel:${config.clinicPhone2}`}>
+                    {config.clinicPhone2}
+                  </a>
                 </li>
               </ul>
             </div>
@@ -251,5 +264,5 @@ export default function Layout({ children }) {
         </div>
       </footer>
     </>
-  )
+  );
 }
